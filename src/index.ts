@@ -7,10 +7,25 @@ import {
   countChar,
   countNum,
   countWords,
+  getByteSize,
+  linksNumber,
 } from './noteMetaPlugin';
 
 joplin.plugins.register({
   onStart: async function () {
+    // Dailog
+
+    const dialog = joplin.views.dialogs;
+
+    const handle = await dialog.create('myDialog1');
+
+    await dialog.setButtons(handle, [
+      {
+        id: 'Close',
+      },
+    ]);
+
+    // Registering settings
     await joplin.settings.registerSection('myCustomSection', {
       label: 'Meta',
       iconName: 'fas fa-info',
@@ -46,69 +61,76 @@ joplin.plugins.register({
       },
     });
 
+    // Registering command
     await joplin.commands.register({
-      name: 'incValue',
-      label: 'Increment custom setting value',
-
-      iconName: 'fas fa-music',
+      name: 'View-Dialog',
+      label: 'My Test Command 1',
+      iconName: 'fas fa-info',
       execute: async () => {
-        const value = await joplin.settings.value('myCustomSetting');
-        console.info('Got value', value);
-        await joplin.settings.setValue('myCustomSetting', value + 1);
+        joplin.views.dialogs.open(handle);
       },
     });
 
-    await joplin.commands.register({
-      name: 'checkValue',
-      label: 'Check custom setting value',
-      iconName: 'fas fa-drum',
-      execute: async () => {
-        const value = await joplin.settings.value('myCustomSetting');
-        alert('Current value is: ' + value);
-      },
-    });
-
+    // adds command to the note toolbar
     await joplin.views.toolbarButtons.create(
-      'incValueButton',
-      'incValue',
-      ToolbarButtonLocation.NoteToolbar
+      'Button1',
+      'View-Dialog',
+      ToolbarButtonLocation.EditorToolbar
     );
-    await joplin.views.toolbarButtons.create(
-      'checkValueButton',
-      'checkValue',
-      ToolbarButtonLocation.NoteToolbar
-    );
-
-    const dialog = joplin.views.dialogs;
-
-    const handle = await dialog.create('myDialog1');
 
     async function getCurrentNote() {
       const note = await joplin.workspace.selectedNote();
       const line = note.body;
 
       if (note) {
-        console.info('words: ', countWords(line));
-        console.info('lines: ', countLines(line));
-        console.info('chars: ', countChar(line));
-        console.info('numbers: ', countNum(line));
-        console.info('letter: ', countLetter(line));
         await dialog.setHtml(
           handle,
-          `<p>chars: ${countChar(line)}</p>
-				<p>Lines: ${countLines(line)}</p>
-				<p>Words: ${countWords(line)}</p>
-				<p>Letters: ${countLetter(line)}</p>
-				<p>Numbers: ${countNum(line)}</p>`
+          `
+				<table>
+					<tr>
+						<th></th>
+						<th>Editor</th>
+						<th>Viewer</th>
+					</tr>
+					<tr>
+						<td>Characters</td>
+						<td>${countChar(line)}</td>
+						<td>${countChar(line)}</td>
+						
+					</tr>
+					<tr>
+						<td>Words</td>
+						<td>${countWords(line)}</td>
+						<td>${countWords(line)}</td>
+					</tr>
+					<tr>
+						<td>Letters</td>
+						<td>${countLetter(line)}</td>
+						<td>${countLetter(line)}</td>
+					</tr>
+					<tr>
+						<td>Numbers</td>
+						<td>${countNum(line)}</td>
+						<td>${countNum(line)}</td>
+					</tr>
+					<tr>
+						<td>Lines</td>
+						<td>${countLines(line)}</td>
+						<td>${countLines(line)}</td>
+					</tr>
+					<tr>
+						<td>Links</td>
+						<td>${linksNumber(line)}</td>
+						<td>${linksNumber(line)}</td>
+					</tr>
+				</table>
+				<p>Size: ${getByteSize(line)}</p>
+			`
         );
-        joplin.views.dialogs.open(handle);
       } else {
         console.info('no note selected');
       }
     }
-
-    const result = await dialog.open(handle);
-    console.info('Got result: ' + JSON.stringify(result));
 
     await joplin.workspace.onNoteChange(() => {
       getCurrentNote();
@@ -117,7 +139,5 @@ joplin.plugins.register({
     await joplin.workspace.onNoteSelectionChange(() => {
       getCurrentNote();
     });
-
-    getCurrentNote();
   },
 });
