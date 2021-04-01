@@ -71,7 +71,13 @@ function getByteSize(str) {
 // Gets number of images
 export function getImageNum(str) {
   // prettier-ignore
-  const regex = '/(?:!\[(.*?)\]\((.*?)\))/g';
-  const numImages = str.match(/(?:!\[(.*?)\]\((.*?)\))/g).length;
-  return numImages;
+  // regex matches all images in note
+  const regex = /(?:!\[(.*?)\]\((.*?)\))/g;
+
+  const numImages = str.match(regex);
+  if (numImages != null) {
+    return numImages.length;
+  } else {
+    return '0';
+  }
 }
