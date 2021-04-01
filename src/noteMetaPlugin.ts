@@ -17,6 +17,7 @@ export function getNumLinks(str) {
 
 // Gets number of 'words' in a note
 function countWords(str) {
+  // prettier-ignore
   str = str.replace(/(^\s*)|(\s*$)/gi, '');
   str = str.replace(/[ ]{2,}/gi, ' ');
   str = str.replace(/\n /, '\n');
@@ -44,7 +45,7 @@ function countLetter(str) {
   return str.replace(/[^a-z]/gi, '').length;
 }
 
-// Claculates the size in bytes of the note
+// Gets the size in bytes of the note
 function getByteSize(str) {
   const byteSize = (str) => new Blob([str]).size;
   const result = byteSize(str);
@@ -65,4 +66,12 @@ function getByteSize(str) {
   };
 
   return convertBytes(result);
+}
+
+// Gets number of images
+export function getImageNum(str) {
+  // prettier-ignore
+  const regex = '/(?:!\[(.*?)\]\((.*?)\))/g';
+  const numImages = str.match(/(?:!\[(.*?)\]\((.*?)\))/g).length;
+  return numImages;
 }
