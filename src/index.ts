@@ -16,7 +16,6 @@ import {
 joplin.plugins.register({
   onStart: async function () {
     // Dailog
-
     const dialog = joplin.views.dialogs;
 
     const handle = await dialog.create('myDialog1');
@@ -26,6 +25,8 @@ joplin.plugins.register({
         id: 'Close',
       },
     ]);
+
+    await joplin.views.dialogs.addScript(handle, './pluginScripts/dialog.css');
 
     // Registering settings
     await joplin.settings.registerSection('myCustomSection', {
@@ -88,7 +89,7 @@ joplin.plugins.register({
         await dialog.setHtml(
           handle,
           `
-				<table>
+				<table id="customers">
 					<tr>
 						<th></th>
 						<th>Editor</th>
