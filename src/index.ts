@@ -9,6 +9,8 @@ import {
   countWords,
   getByteSize,
   getNumLinks,
+  getImageNum,
+  getNumCodeBlocks,
 } from './noteMetaPlugin';
 
 joplin.plugins.register({
@@ -123,7 +125,19 @@ joplin.plugins.register({
 						<td>${getNumLinks(line)}</td>
 						<td>${getNumLinks(line)}</td>
 					</tr>
+          <tr>
+						<td>Images</td>
+						<td>${getImageNum(line)}</td>
+						<td>${getImageNum(line)}</td>
+					</tr>
+          <tr>
+            <td>Code blocks</td>
+            <td>${getNumCodeBlocks(line)}</td>
+            <td>${getNumCodeBlocks(line)}</td>
+          </tr>
+    
 				</table>
+       
 				<p>Size: ${getByteSize(line)}</p>
 			`
         );

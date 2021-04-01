@@ -50,7 +50,8 @@ function getByteSize(str) {
   const byteSize = (str) => new Blob([str]).size;
   const result = byteSize(str);
 
-  const convertBytes = function (result) {
+  // determines note size unit
+  const convertBytes = (result) => {
     const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
 
     if (result == 0) {
@@ -79,5 +80,19 @@ export function getImageNum(str) {
     return numImages.length;
   } else {
     return '0';
+  }
+}
+
+// Gets number of code blocks
+export function getNumCodeBlocks(str) {
+  // prettier-ignore
+  //regex matches codeblocks
+  const regex = /```[a-z]*\n[\s\S]*?\n```/g;
+
+  const numCodeBlocks = str.match(regex);
+  if (numCodeBlocks != null) {
+    return numCodeBlocks.length;
+  } else {
+    return 0;
   }
 }
