@@ -8,7 +8,7 @@ import {
   countNum,
   countWords,
   getByteSize,
-  linksNumber,
+  getNumLinks,
 } from './noteMetaPlugin';
 
 joplin.plugins.register({
@@ -120,8 +120,8 @@ joplin.plugins.register({
 					</tr>
 					<tr>
 						<td>Links</td>
-						<td>${linksNumber(line)}</td>
-						<td>${linksNumber(line)}</td>
+						<td>${getNumLinks(line)}</td>
+						<td>${getNumLinks(line)}</td>
 					</tr>
 				</table>
 				<p>Size: ${getByteSize(line)}</p>

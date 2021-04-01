@@ -9,11 +9,13 @@ export {
   getByteSize,
 };
 
-export function linksNumber(str) {
+// Gets number of 'links' in a note
+export function getNumLinks(str) {
   const linkNo = markdownLinkExtractor(str).length;
   return linkNo;
 }
 
+// Gets number of 'words' in a note
 function countWords(str) {
   str = str.replace(/(^\s*)|(\s*$)/gi, '');
   str = str.replace(/[ ]{2,}/gi, ' ');
@@ -21,19 +23,23 @@ function countWords(str) {
   return str.split(' ').length;
 }
 
+// Gets number of 'lines' in a note
 function countLines(str) {
   return str.split('\n').length;
 }
 
+// Gets number of 'characters' in a note
 function countChar(str) {
   str = str.replace(/\n /, '');
   return str.length;
 }
 
+// Gets number of 'numbers' in a note
 function countNum(str) {
   return str.replace(/[^0-9]/g, '').length;
 }
 
+// Gets number of 'letters' in a note
 function countLetter(str) {
   return str.replace(/[^a-z]/gi, '').length;
 }
