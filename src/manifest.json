@@ -1,12 +1,12 @@
 {
-	"manifest_version": 1,
-	"id": "com.example.noteMeta",
-	"app_min_version": "1.7",
-	"version": "1.0.0",
-	"name": "Note Meta",
-	"description": "Gets note meta data such as number of lines, characters and more",
-	"author": "Azamah junior",
-	"homepage_url": "",
-	"repository_url": "",
-	"keywords": []
+  "manifest_version": 1,
+  "id": "com.example.noteMeta",
+  "app_min_version": "1.7",
+  "version": "1.0.0",
+  "name": "Note Meta",
+  "description": "Gets note meta data such as number of lines, characters and more",
+  "author": "Azamah junior",
+  "homepage_url": "",
+  "repository_url": "",
+  "keywords": []
 }
