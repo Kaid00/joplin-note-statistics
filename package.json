@@ -25,6 +25,7 @@
     "yargs": "^16.2.0"
   },
   "dependencies": {
-    "markdown-link-extractor": "^1.2.7"
+    "markdown-link-extractor": "^1.2.7",
+    "remove-markdown": "^0.3.0"
   }
 }

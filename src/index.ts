@@ -13,6 +13,7 @@ import {
   getImageNum,
   getNumCodeBlocks,
   readTime,
+  noMdChar,
 } from './noteMetaPlugin';
 
 joplin.plugins.register({
@@ -104,7 +105,7 @@ joplin.plugins.register({
 					<tr>
 						<td class = "data">Characters</td>
 						<td>${countChar(line)}</td>
-						<td>${countChar(line)}</td>
+						<td>${noMdChar(line)}</td>
 						
 					</tr>
 					<tr>
@@ -137,7 +138,7 @@ joplin.plugins.register({
 						<td>${getImageNum(line)}</td>
 						<td>${getImageNum(line)}</td>
 					</tr>
-          
+      
 				</table>
        
 				<p id = "size">Size: ${getByteSize(line)}</p>

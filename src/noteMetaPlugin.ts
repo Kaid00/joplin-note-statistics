@@ -1,4 +1,5 @@
 const markdownLinkExtractor = require('markdown-link-extractor');
+const removeMd = require('remove-markdown');
 
 export {
   countNum,
@@ -13,6 +14,13 @@ export {
 export function getNumLinks(str) {
   const linkNo = markdownLinkExtractor(str).length;
   return linkNo;
+}
+
+// Gets number of characters excluding MD
+export function noMdChar(str) {
+  let cleanStr = removeMd(str);
+  cleanStr = cleanStr.replace(/\n /, '');
+  return cleanStr.length;
 }
 
 // Gets number of 'words' in a note
