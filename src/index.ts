@@ -1,5 +1,6 @@
 import joplin from 'api';
 import { SettingItemType, ToolbarButtonLocation } from 'api/types';
+import { read } from 'node:fs';
 
 import {
   countLines,
@@ -11,6 +12,7 @@ import {
   getNumLinks,
   getImageNum,
   getNumCodeBlocks,
+  readTime,
 } from './noteMetaPlugin';
 
 joplin.plugins.register({
@@ -89,57 +91,58 @@ joplin.plugins.register({
         await dialog.setHtml(
           handle,
           `
+        <h1>Note Meta data</h1>  
 				<table id="customers">
+          <col style="width:60%">
+          <col style="width:20%">
+          <col style="width:20%">
 					<tr>
 						<th></th>
 						<th>Editor</th>
 						<th>Viewer</th>
 					</tr>
 					<tr>
-						<td>Characters</td>
+						<td class = "data">Characters</td>
 						<td>${countChar(line)}</td>
 						<td>${countChar(line)}</td>
 						
 					</tr>
 					<tr>
-						<td>Words</td>
+						<td class = "data">Words</td>
 						<td>${countWords(line)}</td>
 						<td>${countWords(line)}</td>
 					</tr>
 					<tr>
-						<td>Letters</td>
+						<td class = "data">Letters</td>
 						<td>${countLetter(line)}</td>
 						<td>${countLetter(line)}</td>
 					</tr>
 					<tr>
-						<td>Numbers</td>
+						<td class = "data">Numbers</td>
 						<td>${countNum(line)}</td>
 						<td>${countNum(line)}</td>
 					</tr>
 					<tr>
-						<td>Lines</td>
+						<td class = "data">Lines</td>
 						<td>${countLines(line)}</td>
 						<td>${countLines(line)}</td>
 					</tr>
 					<tr>
-						<td>Links</td>
+						<td class = "data">Links</td>
 						<td>${getNumLinks(line)}</td>
 						<td>${getNumLinks(line)}</td>
 					</tr>
           <tr>
-						<td>Images</td>
+						<td class = "data">Images</td>
 						<td>${getImageNum(line)}</td>
 						<td>${getImageNum(line)}</td>
 					</tr>
-          <tr>
-            <td>Code blocks</td>
-            <td>${getNumCodeBlocks(line)}</td>
-            <td>${getNumCodeBlocks(line)}</td>
-          </tr>
-    
+          
 				</table>
        
-				<p>Size: ${getByteSize(line)}</p>
+				<p id = "size">Size: ${getByteSize(line)}</p>
+        <p id = "size">Read time:${readTime(line)}</p>
+
 			`
         );
       } else {
@@ -154,5 +157,7 @@ joplin.plugins.register({
     await joplin.workspace.onNoteSelectionChange(() => {
       getCurrentNote();
     });
+
+    getCurrentNote();
   },
 });

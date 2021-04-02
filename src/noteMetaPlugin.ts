@@ -83,6 +83,7 @@ export function getImageNum(str) {
   }
 }
 
+// fix
 // Gets number of code blocks
 export function getNumCodeBlocks(str) {
   // prettier-ignore
@@ -94,5 +95,23 @@ export function getNumCodeBlocks(str) {
     return numCodeBlocks.length;
   } else {
     return 0;
+  }
+}
+
+// Get read time
+export function readTime(str) {
+  const wpm = 225;
+  const words = countWords(str);
+  const eqn = words / wpm;
+  const time = Math.ceil(eqn);
+
+  if (eqn <= 0.9) {
+    return `< 1 min`;
+  }
+  if (eqn > 0.9 && eqn <= 1.9) {
+    return `1 min`;
+  }
+  if (eqn >= 2.0) {
+    return `${time} mins`;
   }
 }
