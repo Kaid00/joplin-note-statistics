@@ -1,6 +1,5 @@
 import joplin from 'api';
 import { SettingItemType, ToolbarButtonLocation } from 'api/types';
-import { read } from 'node:fs';
 
 import {
   countLines,
@@ -11,7 +10,6 @@ import {
   getByteSize,
   getNumLinks,
   getImageNum,
-  getNumCodeBlocks,
   readTime,
   noMdChar,
 } from './noteMetaPlugin';
@@ -67,7 +65,7 @@ joplin.plugins.register({
       },
     });
 
-    // Registering command
+    // Registering commands
     await joplin.commands.register({
       name: 'View-Dialog',
       label: 'My Test Command 1',
@@ -86,14 +84,14 @@ joplin.plugins.register({
 
     async function getCurrentNote() {
       const note = await joplin.workspace.selectedNote();
-      const line = note.body;
+      const noteBody = note.body;
 
       if (note) {
         await dialog.setHtml(
           handle,
           `
-        <h1>Note Meta data</h1>  
-				<table id="customers">
+        <h1>Statistics</h1>  
+				<table ${countChar(noteBody)} id="customers">
           <col style="width:60%">
           <col style="width:20%">
           <col style="width:20%">
@@ -102,47 +100,48 @@ joplin.plugins.register({
 						<th>Editor</th>
 						<th>Viewer</th>
 					</tr>
-					<tr>
+				
+					<tr ${countWords(noteBody)}>
+						<td class = "data">Words</td>
+						<td>${countWords(noteBody)}</td>
+						<td>${countWords(noteBody)}</td>
+					</tr>
+          <tr ${countLetter(noteBody)}>
+						<td class = "data">Letters</td>
+						<td>${countLetter(noteBody)}</td>
+						<td>${countLetter(noteBody)}</td>
+					</tr>
+          <tr ${countNum(noteBody)}>
+						<td class = "data">Numbers</td>
+						<td>${countNum(noteBody)}</td>
+						<td>${countNum(noteBody)}</td>
+					</tr>
+          <tr ${getNumLinks(noteBody)}>
+						<td class = "data">Links</td>
+						<td>${getNumLinks(noteBody)}</td>
+						<td>${getNumLinks(noteBody)}</td>
+					</tr>
+					<tr ${getImageNum(noteBody)}>
+						<td  class = "data">Images</td>
+						<td>${getImageNum(noteBody)}</td>
+						<td>${getImageNum(noteBody)}</td>
+					</tr>
+					<tr ${countNum(noteBody)}>
+						<td class = "data">Lines</td>
+						<td>${countLines(noteBody)}</td>
+						<td>${countLines(noteBody)}</td>
+					</tr>
+          <tr ${countChar(noteBody)}>
 						<td class = "data">Characters</td>
-						<td>${countChar(line)}</td>
-						<td>${noMdChar(line)}</td>
+						<td>${countChar(noteBody)}</td>
+						<td>${noMdChar(noteBody)}</td>
 						
 					</tr>
-					<tr>
-						<td class = "data">Words</td>
-						<td>${countWords(line)}</td>
-						<td>${countWords(line)}</td>
-					</tr>
-					<tr>
-						<td class = "data">Letters</td>
-						<td>${countLetter(line)}</td>
-						<td>${countLetter(line)}</td>
-					</tr>
-					<tr>
-						<td class = "data">Numbers</td>
-						<td>${countNum(line)}</td>
-						<td>${countNum(line)}</td>
-					</tr>
-					<tr>
-						<td class = "data">Lines</td>
-						<td>${countLines(line)}</td>
-						<td>${countLines(line)}</td>
-					</tr>
-					<tr>
-						<td class = "data">Links</td>
-						<td>${getNumLinks(line)}</td>
-						<td>${getNumLinks(line)}</td>
-					</tr>
-          <tr>
-						<td class = "data">Images</td>
-						<td>${getImageNum(line)}</td>
-						<td>${getImageNum(line)}</td>
-					</tr>
-      
+					
 				</table>
        
-				<p id = "size">Size: ${getByteSize(line)}</p>
-        <p id = "size">Read time:${readTime(line)}</p>
+				<p id = "size">Size: ${getByteSize(noteBody)}</p>
+        <p id = "size">Read time: ${readTime(noteBody)}</p>
 
 			`
         );

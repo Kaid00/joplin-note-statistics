@@ -13,7 +13,10 @@ export {
 // Gets number of 'links' in a note
 export function getNumLinks(str) {
   const linkNo = markdownLinkExtractor(str).length;
-  return linkNo;
+  if (linkNo != 0) {
+    return linkNo;
+  }
+  return 'hidden';
 }
 
 // Gets number of characters excluding MD
@@ -29,7 +32,14 @@ function countWords(str) {
   str = str.replace(/(^\s*)|(\s*$)/gi, '');
   str = str.replace(/[ ]{2,}/gi, ' ');
   str = str.replace(/\n /, '\n');
-  return str.split(' ').length;
+  const res = str.split(' ').length;
+  if (countLetter(str) === 'hidden') {
+    return 'hidden';
+  }
+  if (res != 0) {
+    return res;
+  }
+  return 'hidden';
 }
 
 // Gets number of 'lines' in a note
@@ -40,17 +50,29 @@ function countLines(str) {
 // Gets number of 'characters' in a note
 function countChar(str) {
   str = str.replace(/\n /, '');
-  return str.length;
+  const res = str.length;
+  if (res != 0) {
+    return res;
+  }
+  return 'hidden';
 }
 
 // Gets number of 'numbers' in a note
 function countNum(str) {
-  return str.replace(/[^0-9]/g, '').length;
+  const res = str.replace(/[^0-9]/g, '').length;
+  if (res != 0) {
+    return res;
+  }
+  return 'hidden';
 }
 
 // Gets number of 'letters' in a note
 function countLetter(str) {
-  return str.replace(/[^a-z]/gi, '').length;
+  const res = str.replace(/[^a-z]/gi, '').length;
+  if (res != 0) {
+    return res;
+  }
+  return 'hidden';
 }
 
 // Gets the size in bytes of the note
@@ -84,13 +106,13 @@ export function getImageNum(str) {
   const regex = /(?:!\[(.*?)\]\((.*?)\))/g;
 
   const numImages = str.match(regex);
+
   if (numImages != null) {
     return numImages.length;
   } else {
-    return '0';
+    return 'hidden';
   }
 }
-
 // fix
 // Gets number of code blocks
 export function getNumCodeBlocks(str) {
