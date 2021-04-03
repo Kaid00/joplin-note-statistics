@@ -15,18 +15,22 @@ It allows to get statistics on number of words, images, links and more for any s
 
 ## Features
 
-- It shows statistics on the number of:
+Statistics such as:
+
+- Number of:
   - Characters
   - Words
-  - Numbers
-  - Lines
+  - Letters
   - Links
   - Images
-  - Read time
-  - Note Size
+  - Numbers
+  - Lines
   - Code fences
     - Not yet supported right now
-- Click on icon on toolbar to acces dialog view
+
+- Note Size
+- Note Read time
+  
 
 ### Screenshots
 
