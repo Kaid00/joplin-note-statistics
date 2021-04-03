@@ -11,7 +11,8 @@ It allows to get statistics on number of words, images, links and more for any s
   - [Screenshots](#screenshots)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Building the plugin](#building)
+- [Development](#usage)
+- [Building the plugin](#Building-the-plugin)
 - [License](#license)
 
 ## Features
@@ -70,6 +71,10 @@ Statistics such as:
 ### From the tool bar
 
 Click on the ℹ️ icon to view the note statistics
+
+## Development
+
+The npm package of the plugin can be found [here](https://www.npmjs.com/package/joplin-plugin-note-stats).
 
 ### Building the plugin
 
