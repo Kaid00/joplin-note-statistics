@@ -29,42 +29,6 @@ joplin.plugins.register({
 
     await joplin.views.dialogs.addScript(handle, './pluginScripts/dialog.css');
 
-    // Registering settings
-    await joplin.settings.registerSection('myCustomSection', {
-      label: 'Meta',
-      iconName: 'fas fa-info',
-    });
-
-    await joplin.settings.registerSetting('myCustomSetting', {
-      value: 100,
-      type: SettingItemType.Int,
-      section: 'myCustomSection',
-      public: true,
-      label: 'Some random number',
-    });
-
-    await joplin.settings.registerSetting('another', {
-      value: true,
-      type: SettingItemType.Bool,
-      section: 'myCustomSection',
-      public: true,
-      label: 'Get Line number',
-    });
-
-    await joplin.settings.registerSetting('multiOptionTest', {
-      value: 'en',
-      type: SettingItemType.String,
-      section: 'myCustomSection',
-      isEnum: true,
-      public: true,
-      label: 'CHoose',
-      options: {
-        en: 'English',
-        fr: 'French',
-        es: 'Spanish',
-      },
-    });
-
     // Registering commands
     await joplin.commands.register({
       name: 'View-Dialog',
