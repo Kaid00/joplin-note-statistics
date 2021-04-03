@@ -55,7 +55,7 @@ It allows to get statistics on number of words, images, links and more for any s
 
 ### From the tool bar
 
-Click on the @icn-camera icon icon to view the note statistics
+Click on the ℹ️ icon to view the note statistics
 
 ### Building the plugin
 
