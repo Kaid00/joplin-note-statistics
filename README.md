@@ -7,6 +7,7 @@ It allows to get statistics on number of words, images, links and more for any s
 ## Table of contents
 
 - [Features](#features)
+  - [Demo](#Demo)
   - [Screenshots](#screenshots)
 - [Installation](#installation)
 - [Usage](#usage)
@@ -18,6 +19,7 @@ It allows to get statistics on number of words, images, links and more for any s
 Statistics such as:
 
 - Number of:
+
   - Characters
   - Words
   - Letters
@@ -30,15 +32,22 @@ Statistics such as:
 
 - Note Size
 - Note Read time
-  
+
+### Demo
+
+![dialog-tool bar](https://github.com/Kaid00/joplin-note-statistics/blob/master/assets/note-stats-dialog.png)
 
 ### Screenshots
-
-#### Dialog
 
 ![dialog-tool bar](https://github.com/Kaid00/joplin-note-statistics/blob/master/assets/note-stats-dialog.png)
 
 ## Installation
+
+### Automatic (Joplin v1.6.4 and newer)
+
+- Open Joplin and navigate to `Preferences > Plugins`
+- Search for `Note statistics` and press install
+- Restart Joplin to enable the plugin
 
 ### Manual
 
@@ -60,7 +69,7 @@ Statistics such as:
 
 ### From the tool bar
 
-Click on the ℹ️  icon to view the note statistics
+Click on the ℹ️ icon to view the note statistics
 
 ### Building the plugin
 
