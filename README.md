@@ -15,18 +15,22 @@ It allows to get statistics on number of words, images, links and more for any s
 
 ## Features
 
-- It shows statistics on the number of:
+Statistics such as:
+
+- Number of:
   - Characters
   - Words
-  - Numbers
-  - Lines
+  - Letters
   - Links
   - Images
-  - Read time
-  - Note Size
+  - Numbers
+  - Lines
   - Code fences
     - Not yet supported right now
-- Click on icon on toolbar to acces dialog view
+
+- Note Size
+- Note Read time
+  
 
 ### Screenshots
 
@@ -36,12 +40,13 @@ It allows to get statistics on number of words, images, links and more for any s
 
 ## Installation
 
-### Automatic (Joplin v1.6.4 and newer)
+### Manual
 
+- Download the latest released JPL package (`*.jpl`) from [here](https://github.com/Kaid00/joplin-note-statistics/releases/tag/1.0.0)
 - Open Joplin and navigate to `Tools > Options > Plugins`
-- Search for `Statistics` and press install
+- Press `Install plugin` and select the previously downloaded `jpl` file
+- Confirm selection
 - Restart Joplin to enable the plugin
-- By default the icon will appear on your tool bar
 
 ### Uninstall
 
@@ -55,11 +60,17 @@ It allows to get statistics on number of words, images, links and more for any s
 
 ### From the tool bar
 
-Click on the @icn-camera icon icon to view the note statistics
+Click on the ℹ️  icon to view the note statistics
 
 ### Building the plugin
 
 If you want to build the plugin by your own simply run `npm run dist`.
+
+### Install Built plugin
+
+- Open Joplin **Configuration > Plugins** section
+- Under Advanced Settings, add the plugin path in the **Development plugins** text field.
+- This should be the path to your main plugin directory, i.e. `path/to/your/root/plugin/directory`.
 
 ### Updating the plugin framework
 
