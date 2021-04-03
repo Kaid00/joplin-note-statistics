@@ -36,13 +36,13 @@ Statistics such as:
 
 #### Dialog
 
-![dialog-tool bar](./assets/note-stats-dialog.png)
+![dialog-tool bar](https://github.com/Kaid00/joplin-note-statistics/blob/master/assets/note-stats-dialog.png)
 
 ## Installation
 
 ### Manual
 
-- Download the latest released JPL package (`*.jpl`) from [here](https://github.com/Kaid00/joplin-note-statistics/releases/tag/1.0.0)
+- Download the latest released JPL package (`*.jpl`) from [here](https://github.com/Kaid00/joplin-note-statistics/releases)
 - Open Joplin and navigate to `Tools > Options > Plugins`
 - Press `Install plugin` and select the previously downloaded `jpl` file
 - Confirm selection
