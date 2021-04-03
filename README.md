@@ -32,7 +32,7 @@ It allows to get statistics on number of words, images, links and more for any s
 
 #### Dialog
 
-![dialog-tool bar](./assets/note-statistics-dialog.png)
+![dialog-tool bar](./assets/note-stats-dialog.png)
 
 ## Installation
 
