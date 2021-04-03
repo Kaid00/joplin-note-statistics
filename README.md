@@ -36,13 +36,6 @@ It allows to get statistics on number of words, images, links and more for any s
 
 ## Installation
 
-### Automatic (Joplin v1.6.4 and newer)
-
-- Open Joplin and navigate to `Tools > Options > Plugins`
-- Search for `Note Statistics` and press install
-- Restart Joplin to enable the plugin
-- By default the icon will appear on your tool bar
-
 ### Manual
 
 - Download the latest released JPL package (`*.jpl`) from [here](https://github.com/Kaid00/joplin-note-statistics/releases/tag/1.0.0)
