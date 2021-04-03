@@ -1,5 +1,5 @@
 {
-  "name": "joplin-plugin-note-meta",
+  "name": "joplin-plugin-note-statistics",
   "version": "1.0.0",
   "scripts": {
     "dist": "webpack --joplin-plugin-config buildMain && webpack --joplin-plugin-config buildExtraScripts && webpack --joplin-plugin-config createArchive",
