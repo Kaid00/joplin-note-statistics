@@ -142,6 +142,6 @@ export function readTime(str) {
     return `1 min`;
   }
   if (eqn >= 2.0) {
-    return `${time} mins`;
+    return `<${time} mins`;
   }
 }
