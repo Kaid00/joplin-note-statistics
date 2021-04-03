@@ -62,6 +62,12 @@ Click on the ℹ️  icon to view the note statistics
 
 If you want to build the plugin by your own simply run `npm run dist`.
 
+### Install Built plugin
+
+- Open Joplin **Configuration > Plugins** section
+- Under Advanced Settings, add the plugin path in the **Development plugins** text field.
+- This should be the path to your main plugin directory, i.e. `path/to/your/root/plugin/directory`.
+
 ### Updating the plugin framework
 
 To update the plugin framework, run `npm run update`.
