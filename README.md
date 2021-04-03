@@ -35,7 +35,7 @@ Statistics such as:
 
 ### Demo
 
-![dialog-tool bar](https://github.com/Kaid00/joplin-note-statistics/blob/master/assets/note-stats-dialog.png)
+![dialog-tool bar](https://github.com/Kaid00/joplin-note-statistics/blob/master/assets/demo.gif)
 
 ### Screenshots
 
