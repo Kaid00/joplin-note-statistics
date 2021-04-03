@@ -113,7 +113,7 @@ export function getImageNum(str) {
     return 'hidden';
   }
 }
-// fix
+// Discovered a odd bug with the regex, this will be fixed in later versions
 // Gets number of code blocks
 export function getNumCodeBlocks(str) {
   // prettier-ignore
