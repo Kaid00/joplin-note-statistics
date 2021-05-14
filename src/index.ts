@@ -32,7 +32,7 @@ joplin.plugins.register({
     // Registering commands
     await joplin.commands.register({
       name: 'View-Dialog',
-      label: 'My Test Command 1',
+      label: 'Note Statistics',
       iconName: 'fas fa-info',
       execute: async () => {
         joplin.views.dialogs.open(handle);
