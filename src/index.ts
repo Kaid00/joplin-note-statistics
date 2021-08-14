@@ -31,7 +31,7 @@ joplin.plugins.register({
 
     // Registering commands
     await joplin.commands.register({
-      name: 'View-Dialog',
+      name: 'viewDialog',
       label: 'Note Statistics',
       iconName: 'fas fa-info',
       execute: async () => {
@@ -41,8 +41,8 @@ joplin.plugins.register({
 
     // adds command to the note toolbar
     await joplin.views.toolbarButtons.create(
-      'Button1',
-      'View-Dialog',
+      'viewDialog',
+      'viewDialog',
       ToolbarButtonLocation.EditorToolbar
     );
 
